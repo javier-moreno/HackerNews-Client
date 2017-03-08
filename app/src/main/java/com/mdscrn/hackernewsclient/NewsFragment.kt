@@ -4,17 +4,25 @@ package com.mdscrn.hackernewsclient
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mdscrn.hackernewsclient.commons.inflate
 import kotlinx.android.synthetic.main.fragment_news.*
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
+import rx.subscriptions.CompositeSubscription
 
 
 /**
  * A simple [Fragment] subclass.
  */
 class NewsFragment : Fragment() {
+
+    private val TAG by lazy { javaClass.canonicalName }
+    private val newsManager by lazy { NewsManager() }
+    var subscriptions = CompositeSubscription()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return container?.inflate(R.layout.fragment_news)
@@ -25,9 +33,48 @@ class NewsFragment : Fragment() {
 
         news_list.setHasFixedSize(true)
         news_list.layoutManager = LinearLayoutManager(context)
-        news_list.adapter = NewsAdapter()
 
-        val news = (1..10).map { HackerNewsItem("Author $it", "Title $it") }
-        (news_list.adapter as NewsAdapter).addNews(news)
+        initAdapter()
+
+        if(savedInstanceState == null)
+            requestNews()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        subscriptions = CompositeSubscription()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        if(!subscriptions.isUnsubscribed){
+            subscriptions.unsubscribe()
+        }
+        subscriptions.clear()
+    }
+
+    fun initAdapter() {
+        if (news_list.adapter == null)
+            news_list.adapter = NewsAdapter()
+    }
+
+    fun requestNews() {
+        val subscription = newsManager.getNews()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe ({
+                    retrievedNews ->
+
+                    (news_list.adapter as NewsAdapter).addNews(retrievedNews)
+                },
+                        {
+                            e ->
+
+                            Log.d(TAG, "Error retriving news $e")
+                        })
+
+        subscriptions.add(subscription)
     }
 }
