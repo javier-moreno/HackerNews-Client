@@ -25,11 +25,13 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount() = items.size
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = delegateAdapters.get(viewType).onCreateViewHolder(parent!!)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        delegateAdapters.get(getItemViewType(position)).onBindViewHolder(holder!!, items[position])
     }
+
+    override fun getItemViewType(position: Int) = items[position].getViewType()
+
+    fun getNews(): List<HackerNewsItem> = items.filter { it.getViewType() == AdapterConstants.NEWS }.map { it as HackerNewsItem }
 }
