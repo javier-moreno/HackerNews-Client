@@ -18,6 +18,7 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     init {
         delegateAdapters.put(AdapterConstants.LOADING, LoadingDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.NEWS, NewsDelegateAdapter())
 
         items = ArrayList<ViewType>()
         items.add(loadingItem)
@@ -32,6 +33,17 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int) = items[position].getViewType()
+
+    fun addNews(news: List<HackerNewsItem>) {
+        val initPosition = items.size - 1
+        items.removeAt(initPosition)
+
+        notifyItemRemoved(initPosition)
+
+        items.addAll(initPosition, news)
+        items.add(loadingItem)
+        notifyItemRangeChanged(initPosition, news.size + 1)
+    }
 
     fun getNews(): List<HackerNewsItem> = items.filter { it.getViewType() == AdapterConstants.NEWS }.map { it as HackerNewsItem }
 }

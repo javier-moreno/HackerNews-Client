@@ -26,5 +26,8 @@ class NewsFragment : Fragment() {
         news_list.setHasFixedSize(true)
         news_list.layoutManager = LinearLayoutManager(context)
         news_list.adapter = NewsAdapter()
+
+        val news = (1..10).map { HackerNewsItem("Author $it", "Title $it") }
+        (news_list.adapter as NewsAdapter).addNews(news)
     }
 }
