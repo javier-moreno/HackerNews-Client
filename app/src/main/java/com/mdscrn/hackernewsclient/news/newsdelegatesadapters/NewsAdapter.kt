@@ -1,26 +1,27 @@
-package com.mdscrn.hackernewsclient
+package com.mdscrn.hackernewsclient.news.newsdelegatesadapters
 
 import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import com.mdscrn.hackernewsclient.api.data.HackerNewsItem
 
 /**
  * Created by javiermoreno on 3/8/17.
  */
 class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var delegateAdapters = SparseArrayCompat<ViewTypeDelegateAdapter>()
-    private var items: ArrayList<ViewType>
+    private var delegateAdapters = SparseArrayCompat<NewsViewTypeDelegateAdapter>()
+    private var items: ArrayList<NewsViewType>
 
-    private val loadingItem = object : ViewType {
-        override fun getViewType() = AdapterConstants.LOADING
+    private val loadingItem = object : NewsViewType {
+        override fun getViewType() = NewsAdapterConstants.LOADING
     }
 
     init {
-        delegateAdapters.put(AdapterConstants.LOADING, LoadingDelegateAdapter())
-        delegateAdapters.put(AdapterConstants.NEWS, NewsDelegateAdapter())
+        delegateAdapters.put(NewsAdapterConstants.LOADING, LoadingDelegateAdapter())
+        delegateAdapters.put(NewsAdapterConstants.NEWS, NewsDelegateAdapter())
 
-        items = ArrayList<ViewType>()
+        items = ArrayList<NewsViewType>()
         items.add(loadingItem)
     }
 
@@ -45,5 +46,5 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         notifyItemRangeChanged(initPosition, news.size + 1)
     }
 
-    fun getNews(): List<HackerNewsItem> = items.filter { it.getViewType() == AdapterConstants.NEWS }.map { it as HackerNewsItem }
+    fun getNews(): List<HackerNewsItem> = items.filter { it.getViewType() == NewsAdapterConstants.NEWS }.map { it as HackerNewsItem }
 }

@@ -1,4 +1,4 @@
-package com.mdscrn.hackernewsclient
+package com.mdscrn.hackernewsclient.api.data
 
 /**
  * Created by javiermoreno on 3/9/17.

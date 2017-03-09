@@ -1,5 +1,6 @@
-package com.mdscrn.hackernewsclient
+package com.mdscrn.hackernewsclient.api
 
+import com.mdscrn.hackernewsclient.api.data.HackerNewsStorieResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
