@@ -20,14 +20,21 @@ class NewsManager {
             Log.d(TAG, storiesIds.toString())
 
             val stories = mutableListOf<HackerNewsStorieResponse>()
+
             for (storyId in storiesIds) {
+                if(stories.count() == 20) {
+                    val news = stories.map { HackerNewsItem(it.by, it.title) }
+                    subscriber.onNext(news)
+
+                    stories.clear()
+                }
+
                 val story = restAPI.getStory(storyId).execute().body()
                 stories.add(story)
                 Log.d(TAG, story.toString())
             }
 
-            val news = stories.map { HackerNewsItem(it.by, it.title) }
-            subscriber.onNext(news)
+
             subscriber.onCompleted()
         }
     }
