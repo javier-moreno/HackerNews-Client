@@ -69,11 +69,11 @@ class NewsFragment : Fragment() {
 
                     (news_list.adapter as NewsAdapter).addNews(retrievedNews)
                 },
-                        {
-                            e ->
+                {
+                    e ->
 
-                            Log.d(TAG, "Error retriving news $e")
-                        })
+                    Log.d(TAG, "Error retriving news $e")
+                })
 
         subscriptions.add(subscription)
     }

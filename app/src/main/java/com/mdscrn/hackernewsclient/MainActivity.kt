@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
+    val TAG by lazy { javaClass.canonicalName }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
