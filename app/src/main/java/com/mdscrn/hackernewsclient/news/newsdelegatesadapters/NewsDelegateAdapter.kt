@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.mdscrn.hackernewsclient.R
 import com.mdscrn.hackernewsclient.api.data.HackerNewsItem
+import com.mdscrn.hackernewsclient.commons.getFriendlyTime
 import com.mdscrn.hackernewsclient.commons.inflate
 import kotlinx.android.synthetic.main.news_item.view.*
 
@@ -33,6 +34,7 @@ class NewsDelegateAdapter : NewsViewTypeDelegateAdapter {
             news_author.text = item.author
             news_score.text = item.score.toString()
             news_comments.text = item.comments.toString()
+            news_time.text = item.time.getFriendlyTime()
         }
 
         fun setEvents(item: HackerNewsItem) = with(itemView) {
