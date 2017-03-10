@@ -26,7 +26,6 @@ class NewsManager {
 
             if (storiesIds == null) {
                 storiesIds = restAPI.getTopStories().execute().body()
-                Log.d(TAG, storiesIds.toString())
             }
 
             val stories = mutableListOf<HackerNewsStorieResponse>()
@@ -44,7 +43,7 @@ class NewsManager {
             if(startIndex < storiesIds!!.count())
                 startIndex += (pageSize + 1)
 
-            val news = stories.map { HackerNewsItem(it.by, it.title, it.score, it.descendants) }
+            val news = stories.map { HackerNewsItem(it.by, it.title, it.score, it.descendants, it.url) }
 
             subscriber.onNext(news)
             subscriber.onCompleted()
