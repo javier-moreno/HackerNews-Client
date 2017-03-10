@@ -3,8 +3,8 @@ package com.mdscrn.hackernewsclient.news.newsdelegatesadapters
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.mdscrn.hackernewsclient.R
-import com.mdscrn.hackernewsclient.commons.inflate
 import com.mdscrn.hackernewsclient.api.data.HackerNewsItem
+import com.mdscrn.hackernewsclient.commons.inflate
 import kotlinx.android.synthetic.main.news_item.view.*
 
 /**
