@@ -27,6 +27,8 @@ class NewsDelegateAdapter : NewsViewTypeDelegateAdapter {
         fun bind(item: HackerNewsItem) = with(itemView) {
             news_title.text = item.title
             news_author.text = item.author
+            news_score.text = item.score.toString()
+            news_comments.text = item.comments.toString()
         }
     }
 }

@@ -12,7 +12,7 @@ import rx.Observable
 
 class NewsManager {
 
-    val pageSize = 20
+    val pageSize = 30
     val TAG: String by lazy { javaClass.simpleName }
     var startIndex: Int = 0
     var storiesIds: List<Int>? = null
@@ -44,7 +44,7 @@ class NewsManager {
             if(startIndex < storiesIds!!.count())
                 startIndex += (pageSize + 1)
 
-            val news = stories.map { HackerNewsItem(it.by, it.title) }
+            val news = stories.map { HackerNewsItem(it.by, it.title, it.score, it.descendants) }
 
             subscriber.onNext(news)
             subscriber.onCompleted()
