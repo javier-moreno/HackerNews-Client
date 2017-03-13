@@ -33,70 +33,70 @@ fun Long.getFriendlyTime(): String {
 
     if (years > 0) {
         if (years == 1) {
-            sb.append("a year")
+            sb.append("1 y")
         } else {
-            sb.append("$years years")
+            sb.append("$years y")
         }
         if (years <= 6 && months > 0) {
             if (months == 1) {
-                sb.append(" and a month")
+                sb.append(" 1 m")
             } else {
-                sb.append(" and $months months")
+                sb.append(" $months m")
             }
         }
     } else if (months > 0) {
         if (months == 1) {
-            sb.append("a month")
+            sb.append("1 m")
         } else {
-            sb.append("$months months")
+            sb.append("$months m")
         }
         if (months <= 6 && days > 0) {
             if (days == 1) {
-                sb.append(" and a day")
+                sb.append(" 1 d")
             } else {
-                sb.append(" and $days days")
+                sb.append(" $days d")
             }
         }
     } else if (days > 0) {
         if (days == 1) {
-            sb.append("a day")
+            sb.append("1 d")
         } else {
-            sb.append("$days days")
+            sb.append("$days d")
         }
         if (days <= 3 && hrs > 0) {
             if (hrs == 1) {
-                sb.append(" and an hour")
+                sb.append(" 1 h")
             } else {
-                sb.append(" and $hrs hours")
+                sb.append(" $hrs h")
             }
         }
     } else if (hrs > 0) {
         if (hrs == 1) {
-            sb.append("an hour")
+            sb.append("1 h")
         } else {
-            sb.append("$hrs hours")
+            sb.append("$hrs h")
         }
         if (min > 1) {
-            sb.append(" and $min minutes")
+            sb.append(" $min m")
         }
     } else if (min > 0) {
         if (min == 1) {
-            sb.append("a minute")
+            sb.append("1 m")
         } else {
-            sb.append("$min minutes")
+            sb.append("$min m")
         }
         if (sec > 1) {
-            sb.append(" and $sec seconds")
+            sb.append(" $sec s")
         }
     } else {
         if (sec <= 1) {
-            sb.append("about a second")
+            sb.append("1 s")
         } else {
-            sb.append("about $sec seconds")
+            sb.append("$sec s")
         }
     }
 
-    sb.append(" ago")
+    sb.append("")
 
     return sb.toString()
 }

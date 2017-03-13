@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
-import android.view.View
 import android.view.ViewGroup
 import com.mdscrn.hackernewsclient.R
 import com.mdscrn.hackernewsclient.api.data.HackerNewsItem
@@ -32,22 +31,20 @@ class NewsDelegateAdapter : NewsViewTypeDelegateAdapter {
 
         fun bind(item: HackerNewsItem) = with(itemView) {
             news_title.text = item.title
-            news_author.text = item.author
+            val author = item.author
+            val time = item.time.getFriendlyTime()
+            news_author.text = "$author - $time"
             news_score.text = item.score.toString()
             news_comments.text = item.comments.toString()
-            news_time.text = item.time.getFriendlyTime()
             news_container.setCardBackgroundColor( if (item.title.startsWith("show", ignoreCase = true)) ContextCompat.getColor(context, R.color.showBackground) else if (item.title.startsWith("ask", ignoreCase = true)) ContextCompat.getColor(context, R.color.askBackground) else ContextCompat.getColor(context, R.color.newsBackground) )
          }
 
         fun setEvents(item: HackerNewsItem) = with(itemView) {
             if (item.url != null) {
-                news_link.visibility = View.VISIBLE
-                news_link.setOnClickListener {
+                news_title.setOnClickListener {
                     val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(item.url))
                     context.startActivity(browserIntent)
                 }
-            } else {
-                news_link.visibility = View.INVISIBLE
             }
         }
     }
