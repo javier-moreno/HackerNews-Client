@@ -3,8 +3,10 @@ package com.mdscrn.hackernewsclient
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.mdscrn.hackernewsclient.news.NewsFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,9 +16,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initializeViews()
+
         if (savedInstanceState == null) {
             changeFragment(NewsFragment())
         }
+    }
+
+    fun initializeViews() {
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorText))
+        toolbar.setSubtitleTextColor(ContextCompat.getColor(this, R.color.colorText))
+
+        toolbar.title = "Trending"
+        toolbar.subtitle = "Developed in Kotlin"
     }
 
     fun changeFragment(f: Fragment, cleanStack: Boolean = false) {

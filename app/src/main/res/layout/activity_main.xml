@@ -8,6 +8,14 @@
     android:orientation="vertical"
     tools:context="com.mdscrn.hackernewsclient.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"/>
+
     <FrameLayout
         android:id="@+id/activity_base_content"
         android:layout_width="match_parent"
