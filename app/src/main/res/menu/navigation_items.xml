@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_trending_up_black_24dp"
+        android:id="@+id/navigation_trending"
+        android:title="Trending"/>
+
+    <item
+        android:icon="@drawable/ic_question_answer_black_24dp"
+        android:id="@+id/navigation_ask"
+        android:title="Ask"/>
+
+    <item
+        android:icon="@drawable/ic_slideshow_black_24dp"
+        android:id="@+id/navigation_show"
+        android:title="Show"/>
+
+    <item
+        android:icon="@drawable/ic_work_black_24dp"
+        android:id="@+id/navigation_job"
+        android:title="Job"/>
+</menu>
