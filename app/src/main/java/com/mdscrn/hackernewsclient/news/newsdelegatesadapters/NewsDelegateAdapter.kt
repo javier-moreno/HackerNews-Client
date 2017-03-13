@@ -2,6 +2,7 @@ package com.mdscrn.hackernewsclient.news.newsdelegatesadapters
 
 import android.content.Intent
 import android.net.Uri
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,8 @@ class NewsDelegateAdapter : NewsViewTypeDelegateAdapter {
             news_score.text = item.score.toString()
             news_comments.text = item.comments.toString()
             news_time.text = item.time.getFriendlyTime()
-        }
+            news_container.setCardBackgroundColor( if (item.title.startsWith("show", ignoreCase = true)) ContextCompat.getColor(context, R.color.showBackground) else if (item.title.startsWith("ask", ignoreCase = true)) ContextCompat.getColor(context, R.color.askBackground) else ContextCompat.getColor(context, R.color.newsBackground) )
+         }
 
         fun setEvents(item: HackerNewsItem) = with(itemView) {
             if (item.url != null) {

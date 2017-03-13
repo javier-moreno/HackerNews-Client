@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="@color/colorBackground"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_margin="5dp"
+                                    android:orientation="vertical"
+                                    android:background="@color/colorBackground"
+                                    card_view:cardBackgroundColor="@color/askBackground"
+                                    card_view:cardCornerRadius="1dp"
+                                    android:layout_width="match_parent"
+                                    android:id="@+id/news_container"
+                                    android:layout_height="120dp">
 
     <LinearLayout
         android:layout_margin="5dp"
@@ -11,10 +16,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:visibility="gone"
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -28,7 +34,6 @@
                     android:textColor="@color/colorText"
                     android:textSize="20dp"
                     android:text="Title"
-                    android:id="@+id/news_title"
                     android:layout_width="wrap_content"
                     android:layout_marginRight="5dp"
                     android:layout_height="wrap_content"/>
@@ -59,7 +64,6 @@
                     android:textSize="14dp"
                     android:text="Author"
                     android:layout_marginRight="5dp"
-                    android:id="@+id/news_author"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"/>
 
@@ -76,7 +80,8 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_width="70dp"
+            android:visibility="gone"
+            android:layout_width="65dp"
             android:layout_height="wrap_content">
 
             <LinearLayout
@@ -95,7 +100,6 @@
 
 
                     <TextView
-                        android:id="@+id/news_score"
                         android:textSize="12dp"
                         android:gravity="center_vertical"
                         android:textColor="@color/colorText"
@@ -117,7 +121,6 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/news_comments"
                         android:textSize="12dp"
                         android:gravity="center_vertical"
                         android:textColor="@color/colorText"
@@ -136,11 +139,100 @@
             </LinearLayout>
 
         </RelativeLayout>
+
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textSize="17dp"
+                android:textColor="@color/colorText"
+                android:id="@+id/news_title"
+                android:text="This could be a really long title"
+                android:gravity="center"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:textColor="@color/colorText"
+                android:id="@+id/news_author"
+                android:text="Author"
+                android:gravity="center"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/news_title"
+                android:layout_alignParentStart="true"/>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/news_author"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/news_comments"
+                        android:textColor="@color/colorText"
+                        android:gravity="center"
+                        android:text="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:textColor="@color/colorText"
+                        android:gravity="center"
+                        android:text="Comments"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:textColor="@color/colorText"
+                        android:gravity="center"
+                        android:id="@+id/news_score"
+                        android:text="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:textColor="@color/colorText"
+                        android:gravity="center"
+                        android:text="Score"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
     </LinearLayout>
-
-    <View
-        android:background="@color/colorPrimaryDark"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
-
-</LinearLayout>
+</android.support.v7.widget.CardView>
