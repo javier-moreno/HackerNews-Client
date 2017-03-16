@@ -36,7 +36,7 @@ class NewsDelegateAdapter : NewsViewTypeDelegateAdapter {
             news_author.text = "$author - $time"
             news_score.text = item.score.toString()
             news_comments.text = item.comments.toString()
-            news_container.setCardBackgroundColor( if (item.title.startsWith("show", ignoreCase = true)) ContextCompat.getColor(context, R.color.showBackground) else if (item.title.startsWith("ask", ignoreCase = true)) ContextCompat.getColor(context, R.color.askBackground) else ContextCompat.getColor(context, R.color.newsBackground) )
+            news_container.setBackgroundColor( if (item.title.startsWith("show", ignoreCase = true)) ContextCompat.getColor(context, R.color.showBackground) else if (item.title.startsWith("ask", ignoreCase = true)) ContextCompat.getColor(context, R.color.askBackground) else ContextCompat.getColor(context, R.color.newsBackground) )
          }
 
         fun setEvents(item: HackerNewsItem) = with(itemView) {

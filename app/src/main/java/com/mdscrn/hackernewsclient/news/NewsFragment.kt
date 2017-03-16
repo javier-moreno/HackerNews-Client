@@ -10,8 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.mdscrn.hackernewsclient.InfiniteScrollListener
 import com.mdscrn.hackernewsclient.R
-import com.mdscrn.hackernewsclient.news.newsdelegatesadapters.NewsAdapter
+import com.mdscrn.hackernewsclient.api.data.NewsType
 import com.mdscrn.hackernewsclient.commons.inflate
+import com.mdscrn.hackernewsclient.news.newsdelegatesadapters.NewsAdapter
 import kotlinx.android.synthetic.main.fragment_news.*
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -21,10 +22,10 @@ import rx.subscriptions.CompositeSubscription
 /**
  * A simple [Fragment] subclass.
  */
-class NewsFragment : Fragment() {
+class NewsFragment (private val newsType: NewsType) : Fragment() {
 
     private val TAG by lazy { javaClass.canonicalName }
-    private val newsManager by lazy { NewsManager() }
+    private val newsManager by lazy { NewsManager(newsType) }
     var subscriptions = CompositeSubscription()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

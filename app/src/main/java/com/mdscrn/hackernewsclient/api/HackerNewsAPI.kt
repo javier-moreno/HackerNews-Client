@@ -13,6 +13,15 @@ interface HackerNewsAPI {
     @GET("/v0/topstories.json")
     fun getTopStories() : Call<List<Int>>
 
+    @GET("/v0/showstories.json")
+    fun getShowStories() : Call<List<Int>>
+
+    @GET("/v0/askstories.json")
+    fun getAskStories() : Call<List<Int>>
+
+    @GET("/v0/jobstories.json")
+    fun getJobStories() : Call<List<Int>>
+
     @GET("/v0/item/{id}.json")
     fun getStory(@Path("id") id: Int) : Call<HackerNewsStorieResponse>
 }

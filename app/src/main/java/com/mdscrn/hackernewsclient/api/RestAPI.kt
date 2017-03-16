@@ -24,6 +24,9 @@ class RestAPI {
     }
 
     fun getTopStories() : Call<List<Int>> = hackerNewsAPI.getTopStories()
+    fun getShowStories() : Call<List<Int>> = hackerNewsAPI.getShowStories()
+    fun getAskStories() : Call<List<Int>> = hackerNewsAPI.getAskStories()
+    fun getJobStories() : Call<List<Int>> = hackerNewsAPI.getJobStories()
 
     fun getStory(id: Int) : Call<HackerNewsStorieResponse> = hackerNewsAPI.getStory(id)
 }

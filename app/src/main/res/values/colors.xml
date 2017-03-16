@@ -3,11 +3,12 @@
     <color name="colorPrimary">#19bc9d</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#19bc9d</color>
-    <color name="colorBackground">#FFF</color>
-    <color name="colorText">#eee</color>
-
+    <color name="colorBackground">#efefef</color>
+    <color name="colorText">#5b5b5b</color>
+    <color name="toolBarText">#fff</color>
 
     <color name="newsBackground">#3598db</color>
     <color name="showBackground">#f1c40f</color>
     <color name="askBackground">#e74b3c</color>
+
 </resources>

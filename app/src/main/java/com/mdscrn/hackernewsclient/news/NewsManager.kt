@@ -4,13 +4,14 @@ import android.util.Log
 import com.mdscrn.hackernewsclient.api.RestAPI
 import com.mdscrn.hackernewsclient.api.data.HackerNewsItem
 import com.mdscrn.hackernewsclient.api.data.HackerNewsStorieResponse
+import com.mdscrn.hackernewsclient.api.data.NewsType
 import rx.Observable
 
 /**
  * Created by javiermoreno on 3/8/17.
  */
 
-class NewsManager {
+class NewsManager(private val newsType: NewsType) {
 
     val pageSize = 30
     val TAG: String by lazy { javaClass.simpleName }
@@ -25,7 +26,15 @@ class NewsManager {
             val restAPI = RestAPI()
 
             if (storiesIds == null) {
-                storiesIds = restAPI.getTopStories().execute().body()
+
+                when (newsType) {
+                    NewsType.Ask -> storiesIds = restAPI.getAskStories().execute().body()
+                    NewsType.Job -> storiesIds = restAPI.getJobStories().execute().body()
+                    NewsType.Show -> storiesIds = restAPI.getShowStories().execute().body()
+                    NewsType.Top -> storiesIds = restAPI.getTopStories().execute().body()
+                }
+
+
             }
 
             val stories = mutableListOf<HackerNewsStorieResponse>()
