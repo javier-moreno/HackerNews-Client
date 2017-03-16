@@ -52,7 +52,7 @@ class NewsManager(private val newsType: NewsType) {
             if(startIndex < storiesIds!!.count())
                 startIndex += (pageSize + 1)
 
-            val news = stories.map { HackerNewsItem(it.by, it.title, it.score, it.descendants, it.url, it.time) }
+            val news = stories.map { HackerNewsItem(it.by, it.title, it.score, it.descendants, it.url, it.time, it.type) }
 
             subscriber.onNext(news)
             subscriber.onCompleted()

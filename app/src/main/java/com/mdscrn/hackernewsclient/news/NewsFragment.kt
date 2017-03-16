@@ -22,10 +22,11 @@ import rx.subscriptions.CompositeSubscription
 /**
  * A simple [Fragment] subclass.
  */
-class NewsFragment (private val newsType: NewsType) : Fragment() {
+class NewsFragment (val newsType: NewsType) : Fragment() {
 
     private val TAG by lazy { javaClass.canonicalName }
     private val newsManager by lazy { NewsManager(newsType) }
+
     var subscriptions = CompositeSubscription()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

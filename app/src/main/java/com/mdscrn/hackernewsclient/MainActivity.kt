@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         ft.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom, R.anim.abc_popup_enter, R.anim.abc_popup_exit)
+
         ft.replace(R.id.activity_base_content, f)
         ft.addToBackStack(null)
         ft.commit()
